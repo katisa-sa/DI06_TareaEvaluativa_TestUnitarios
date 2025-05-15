@@ -13,7 +13,7 @@ describe('GestionApiService', () => {
   //Habrá que import los modulos necesarios, como por ejemplo para simular HttpClient
   beforeEach(() => {
     TestBed.configureTestingModule({
-      //importamos el httpClienteTestingModule (OJO, no importamos httpClient)
+      //importamos el httpClienteTestingModule (OJO, no importamos httpClient)gitse puede reinstalar la terminal para que 
       imports:[HttpClientTestingModule],
       //En providers añadilos el servicio que vamos a utilizar
       providers: [GestionApiService]
@@ -85,9 +85,10 @@ describe('GestionApiService', () => {
     //Recordar que hacemos uso de HttpTestingController, no de httpClient, por tanto, estamos simulando la llamada API.
 
 
-//Necesitaremos apiKey de cada uno. 
+    //Necesitaremos apiKey de cada uno. 
     //IMPORTANTE MODIFICAR EL APIKEY EN LA CARPETA ENVIRONMENTS
-    const req = httpMock.expectOne('https://newsapi.org/v2/top-headlines?country=us&category=${categoria}&apiKey=${service.apiKey}');
+    const req = httpMock.expectOne(`https://newsapi.org/v2/top-headlines?country=us&category=${categoria}&apiKey=${service.apiKey}`);
+
     //Simulamos que la respuesta del servidor sea nuestro mockResponse (flush)
     req.flush(mockRespuesta);
     //datos$ tendría que modificarse con los datos simulados (categoria=business y totalResults=2), por tanto data contendrá esos datos.
